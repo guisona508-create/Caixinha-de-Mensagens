@@ -1,3 +1,14 @@
+function verificarSenha() {
+  const senha = document.getElementById("senha").value;
+
+  if (senha === "220800") {
+    document.getElementById("bloqueio").style.display = "none";
+    document.getElementById("conteudo").style.display = "block";
+  } else {
+    alert("Senha Incorreta 😢");
+  }
+}
+
 const mensagens = {
   triste: [
     "Ei... vai ficar tudo bem. Eu to aqui com você, sempre. 💖",
