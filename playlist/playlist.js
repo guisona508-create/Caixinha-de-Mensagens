@@ -118,6 +118,10 @@ function anterior() {
   carregarMusica();
 }
 
+function voltar() {
+  window.location.href = "../index.html";
+}
+
 // Volume
 volume.addEventListener("input", () => {
   audio.volume = volume.value;
