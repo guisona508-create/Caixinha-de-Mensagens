@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+
+h1,
+h3 {
+  color: white;
+  font-size: 22px;
+  padding: 0 10px;
+}
+
+.coracao {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: cair 5s linear;
+}
+@keyframes cair {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.player {
+  background: #121212;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+.capa {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.controles button {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.controles button:hover {
+  background: #333;
+}
+
+#progresso {
+  width: 100%;
+}
+
+ul {
+  max-height: 150px;
+  overflow-y: auto; /* SCROLL */
+  padding: 0;
+}
+
+li {
+  color: white;
+  list-style: none;
+  background: #1e1e1e;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+li:hover {
+  background: #333;
+}
