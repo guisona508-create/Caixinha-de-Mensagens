@@ -132,3 +132,7 @@ button:active {
   border-radius: 8px;
   border: none;
 }
+
+a {
+  text-decoration: none;
+}
