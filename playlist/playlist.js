@@ -77,6 +77,36 @@ const musicas = [
     arquivo: "songs/mirrors.mp3",
     capa: "photos/foto5.jpeg",
   },
+  {
+    nome: "Zé Neto e Cristiano - Te Amo 💖",
+    arquivo: "songs/Teamo.mp3",
+    capa: "photos/foto12.jfif",
+  },
+  {
+    nome: "Wiu - Maria do Olho Verde 💖",
+    arquivo: "songs/olhoverde.mp3",
+    capa: "photos/gato1.jpeg",
+  },
+  {
+    nome: "Bryan Adams - Heaven 💖",
+    arquivo: "songs/heaven.mp3",
+    capa: "photos/gato2.jpg",
+  },
+  {
+    nome: "Gustavo Mioto - Princesa 💖",
+    arquivo: "songs/princesa.mp3",
+    capa: "photos/gato3.png",
+  },
+  {
+    nome: "TE VIVO - Luan Santana 💖",
+    arquivo: "songs/tevivo.mp3",
+    capa: "photos/gato4.jpg",
+  },
+  {
+    nome: "Bon Jovi - Always 💖",
+    arquivo: "songs/always.mp3",
+    capa: "photos/gato5.png",
+  },
 ];
 
 let index = 0;
