@@ -114,4 +114,22 @@ button:active {
 a {
   text-decoration: none;
 }
->>>>>>> e507155c1d46d1ccef034ea8a9ce877f98036f18
+
+#saudacao {
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 0, 100, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

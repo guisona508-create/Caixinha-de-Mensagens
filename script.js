@@ -120,3 +120,19 @@ function abrirCarta() {
   const carta = document.getElementById("conteudoCarta");
   carta.classList.toggle("aberta");
 }
+
+function gerarSaudacao() {
+  const hora = new Date().getHours();
+
+  if (hora >= 6 && hora <= 11) {
+    return "Bom dia minha princesa 💖";
+  } else if (hora >= 12 && hora <= 17) {
+    return "Boa tarde meu amor 💕";
+  } else {
+    return "Boa noite minha vida 🌙";
+  }
+}
+document.getElementById("saudacao").innerText = gerarSaudacao();
+setInterval(() => {
+  document.getElementById("saudacao").innerText = gerarSaudacao();
+}, 60000); // atualiza a cada 1 minuto
