@@ -20,12 +20,13 @@ h3 {
 .coracao {
   position: fixed;
   top: -10px;
-  font-size: 20px;
-  animation: cair 5s linear;
+  font-size: 24px;
+  animation: cair 5s linear forwards;
 }
 @keyframes cair {
   to {
-    transform: translateY(100vh);
+    transform: translateY(110vh);
+    opacity: 0;
   }
 }
 
