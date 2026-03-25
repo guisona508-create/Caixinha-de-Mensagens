@@ -20,6 +20,7 @@ const capa = document.getElementById("capa");
 const progresso = document.getElementById("progresso");
 const volume = document.getElementById("volume");
 const lista = document.getElementById("lista");
+const buscarMusica = document.getElementById("buscarMusica");
 
 const musicas = [
   {
@@ -169,4 +170,33 @@ progresso.addEventListener("input", () => {
 // Próxima automática
 audio.addEventListener("ended", () => {
   proxima();
+});
+
+function renderizarLista(listaMusicas) {
+  lista.innerHTML = "";
+
+  listaMusicas.forEach((m) => {
+    const li = document.createElement("li");
+    li.innerText = m.nome;
+
+    li.onclick = () => {
+      audio.src = m.arquivo;
+      nome.innerText = m.nome;
+      capa.src = m.capa;
+      audio.play();
+    };
+
+    lista.appendChild(li);
+  });
+}
+
+// escutar o Input
+buscarMusica.addEventListener("input", (e) => {
+  const termo = e.target.value.toLowerCase();
+
+  const musicasFiltradas = musicas.filter((musica) =>
+    musica.nome.toLowerCase().includes(termo),
+  );
+
+  renderizarLista(musicasFiltradas);
 });
