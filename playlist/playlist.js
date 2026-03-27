@@ -108,6 +108,11 @@ const musicas = [
     arquivo: "songs/always.mp3",
     capa: "photos/gato5.png",
   },
+  {
+    nome: "Pensando em Você - Paulinho Moska 💖",
+    arquivo: "songs/pensandoemvc.mp3",
+    capa: "photos/gato6.jpg",
+  },
 ];
 
 let index = 0;
