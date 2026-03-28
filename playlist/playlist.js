@@ -113,6 +113,16 @@ const musicas = [
     arquivo: "songs/pensandoemvc.mp3",
     capa: "photos/gato6.jpg",
   },
+  {
+    nome: "Nando Reis, Ana Cañas - Pra Você Guardei O Amor 💖",
+    arquivo: "songs/guardeiamor.mp3",
+    capa: "photos/gatinho.jpg",
+  },
+   {
+    nome: "Ed Sheeran - Perfect 💖",
+    arquivo: "songs/perfect.mp3",
+    capa: "photos/gatinha.jpg",
+  },
 ];
 
 let index = 0;
