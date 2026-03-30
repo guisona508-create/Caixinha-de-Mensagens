@@ -65,7 +65,7 @@ h3 {
 }
 
 ul {
-  max-height: 150px;
+  max-height: 200px;
   overflow-y: auto; /* SCROLL */
   padding: 0;
 }
