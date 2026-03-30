@@ -182,10 +182,12 @@ const musicas = [
 ];
 mostrarCategorias();
 
+let listaAtual = musicas;
+
 let index = 0;
 
 function carregarMusica() {
-  const m = musicas[index];
+  const m = listaAtual[index];
   audio.src = m.arquivo;
   nome.innerText = m.nome;
   capa.src = m.capa;
@@ -201,12 +203,12 @@ function pausar() {
 }
 
 function proxima() {
-  index = (index + 1) % musicas.length;
+  index = (index + 1) % listaAtual.length;
   carregarMusica();
 }
 
 function anterior() {
-  index = (index - 1 + musicas.length) % musicas.length;
+  index = (index - 1 + listaAtual.length) % listaAtual.length;
   carregarMusica();
 }
 
@@ -315,12 +317,15 @@ function mostrarCategorias() {
 function mostrarMusicasDaCategoria(nomeCategoria, listaMusicas) {
   lista.innerHTML = "";
 
+  listaAtual = listaMusicas;
+
   //botão para voltar
   const voltarBtn = document.createElement("button");
   voltarBtn.innerText = "⬅️ Voltar";
   voltarBtn.style.background = "444";
 
   voltarBtn.onclick = () => {
+    listaAtual = musicas;
     mostrarCategorias();
   };
 
@@ -338,10 +343,8 @@ function mostrarMusicasDaCategoria(nomeCategoria, listaMusicas) {
     li.innerText = m.nome;
 
     li.onclick = () => {
-      audio.src = m.arquivo;
-      nome.innerText = m.nome;
-      capa.src = m.capa;
-      audio.play();
+      index = listaAtual.indexOf(m);
+      carregarMusica();
     };
 
     lista.appendChild(li);
