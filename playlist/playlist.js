@@ -144,7 +144,7 @@ const musicas = [
     categoria: "Internacional",
   },
 ];
-renderizarLista(musicas);
+mostrarCategorias();
 
 let index = 0;
 
@@ -240,9 +240,74 @@ function renderizarLista(listaMusicas) {
 buscarMusica.addEventListener("input", (e) => {
   const termo = e.target.value.toLowerCase();
 
-  const musicasFiltradas = musicas.filter((musica) =>
-    musica.nome.toLowerCase().includes(termo),
-  );
+  if (termo === "") {
+    mostrarCategorias();
+    return;
+  }
 
-  renderizarLista(musicasFiltradas);
+  const filtradas = musicas.filter((m) => m.nome.toLowerCase().includes(termo));
+
+  renderizarLista(filtradas);
 });
+
+function mostrarCategorias() {
+  lista.innerHTML = "";
+
+  const categorias = {};
+
+  // agrupar
+  musicas.forEach((m) => {
+    if (!categorias[m.categoria]) {
+      categorias[m.categoria] = [];
+    }
+    categorias[m.categoria].push(m);
+  });
+
+  // criar na tela
+  for (let categoria in categorias) {
+    const li = document.createElement("li");
+    li.innerText = categoria;
+
+    li.onclick = () => {
+      mostrarMusicasDaCategoria(categoria, categorias[categoria]);
+    };
+
+    lista.appendChild(li);
+  }
+}
+
+function mostrarMusicasDaCategoria(nomeCategoria, listaMusicas) {
+  lista.innerHTML = "";
+
+  //botão para voltar
+  const voltarBtn = document.createElement("button");
+  voltarBtn.innerText = "⬅️ Voltar";
+  voltarBtn.style.background = "444";
+
+  voltarBtn.onclick = () => {
+    mostrarCategorias();
+  };
+
+  lista.appendChild(voltarBtn);
+
+  // Título
+  const titulo = document.createElement("h3");
+  titulo.innerText = nomeCategoria;
+  titulo.style.color = "white";
+  lista.appendChild(titulo);
+
+  // Músicas
+  listaMusicas.forEach((m) => {
+    const li = document.createElement("li");
+    li.innerText = m.nome;
+
+    li.onclick = () => {
+      audio.src = m.arquivo;
+      nome.innerText = m.nome;
+      capa.src = m.capa;
+      audio.play();
+    };
+
+    lista.appendChild(li);
+  });
+}
