@@ -143,6 +143,42 @@ const musicas = [
     capa: "photos/gatinha.jpg",
     categoria: "Internacional",
   },
+  {
+    nome: "Reinaldo - Brilho no olhar 💖",
+    arquivo: "songs/brilhonoolhar.mp3",
+    capa: "photos/cat1.jpg",
+    categoria: "Samba/Pagode",
+  },
+  {
+    nome: " Fundo de Quintal - Amor dos Deuses💖",
+    arquivo: "songs/amordosdeuses.mp3",
+    capa: "photos/cat2.jpg",
+    categoria: "Samba/Pagode",
+  },
+  {
+    nome: " Jorge Aragão - Eu e Você sempre💖",
+    arquivo: "songs/euevcsempre.mp3",
+    capa: "photos/mouse.jpg",
+    categoria: "Samba/Pagode",
+  },
+  {
+    nome: "Revelação - Essencia da Paixão 💖",
+    arquivo: "songs/essenciadapaixao.mp3",
+    capa: "photos/dog1.jpg",
+    categoria: "Samba/Pagode",
+  },
+  {
+    nome: "Zeca Pagodinho - Outdoor 💖",
+    arquivo: "songs/outdoor.mp3",
+    capa: "photos/dog3.jpg",
+    categoria: "Samba/Pagode",
+  },
+  {
+    nome: "Jorge Aragão - Lucidez 💖",
+    arquivo: "songs/lucidez.mp3",
+    capa: "photos/dog2.jpg",
+    categoria: "Samba/Pagode",
+  },
 ];
 mostrarCategorias();
 
