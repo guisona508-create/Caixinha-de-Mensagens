@@ -179,6 +179,12 @@ const musicas = [
     capa: "photos/dog2.jpg",
     categoria: "Samba/Pagode",
   },
+  {
+    nome: "Zero a dez - Jó de Souza 💖",
+    arquivo: "songs/zeroadez.mp3",
+    capa: "photos/dog1.jpg",
+    categoria: "MPB",
+  },
 ];
 mostrarCategorias();
 
