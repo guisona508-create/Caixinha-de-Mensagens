@@ -1,0 +1,510 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.container-timeline {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInDown 0.8s ease;
+}
+
+.header h1 {
+  font-size: 3em;
+  color: white;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header .subtitle {
+  font-size: 1.2em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Linha central da timeline */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #ff4d6d, #f1356e);
+}
+
+/* Estilos dos eventos */
+.evento {
+  margin-bottom: 50px;
+  display: flex;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.evento.esquerda {
+  justify-content: flex-end;
+  padding-right: 52%;
+}
+
+.evento.direita {
+  justify-content: flex-start;
+  padding-left: 52%;
+}
+
+.evento.esquerda .conteudo-evento {
+  text-align: right;
+}
+
+.evento.direita .conteudo-evento {
+  text-align: left;
+}
+
+/* Ponto da timeline */
+.ponto-timeline {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 4px solid #ff4d6d;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+/* Container do conteúdo */
+.conteudo-evento {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.conteudo-evento:not(.expandido) {
+  max-width: 350px;
+}
+
+.conteudo-evento.expandido {
+  max-width: 100%;
+}
+
+/* Estado colapsado - apenas foto e título */
+.conteudo-evento:not(.expandido) {
+  padding: 0;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.conteudo-evento:not(.expandido) .imagem-container {
+  border-radius: 10px;
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.conteudo-evento:not(.expandido) .texto-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 30px 15px 15px 15px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.6),
+    transparent
+  );
+  border-radius: 0 0 10px 10px;
+}
+
+.conteudo-evento:not(.expandido) h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.2em;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.conteudo-evento:not(.expandido) .data,
+.conteudo-evento:not(.expandido) p {
+  display: none;
+}
+
+/* Estado expandido - mostra tudo */
+.conteudo-evento.expandido {
+  padding: 20px;
+  min-height: auto;
+}
+
+.conteudo-evento.expandido .texto-container {
+  position: static;
+  background: none;
+  padding: 0;
+  width: 100%;
+}
+
+.conteudo-evento.expandido .imagem-container {
+  margin-bottom: 15px;
+  height: 220px;
+  width: 100%;
+}
+
+.conteudo-evento.expandido h3 {
+  position: static;
+  color: #333;
+  margin: 10px 0;
+  font-size: 1.4em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.conteudo-evento.expandido .data {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.conteudo-evento.expandido p {
+  display: block;
+}
+
+.conteudo-evento:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.imagem-container {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+.foto-evento {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.conteudo-evento:hover .foto-evento {
+  transform: scale(1.05);
+}
+
+.video-container {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 260px;
+  position: relative;
+  width: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-evento {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.conteudo-evento.expandido .video-container {
+  height: 280px;
+  margin-bottom: 15px;
+}
+
+.conteudo-evento:not(.expandido) .video-container {
+  border-radius: 10px;
+  margin-bottom: 0;
+}
+
+.texto-container {
+  color: #333;
+}
+
+.data {
+  display: inline-block;
+  background: #ff4d6d;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.conteudo-evento h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin: 10px 0;
+}
+
+.conteudo-evento p {
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Animações */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+.coracao {
+  position: fixed;
+  top: -10px;
+  font-size: 24px;
+  animation: cair 5s linear forwards;
+  z-index: 999;
+}
+
+@keyframes cair {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .header .subtitle {
+    font-size: 1em;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .evento,
+  .evento.esquerda,
+  .evento.direita {
+    padding-left: 60px !important;
+    padding-right: 0 !important;
+    justify-content: flex-start !important;
+    margin-bottom: 40px;
+  }
+
+  .evento.esquerda .conteudo-evento,
+  .evento.direita .conteudo-evento {
+    text-align: left;
+  }
+
+  .ponto-timeline {
+    left: 20px;
+    top: 15px;
+  }
+
+  .conteudo-evento {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .conteudo-evento:not(.expandido) {
+    min-height: 240px;
+  }
+
+  .conteudo-evento:not(.expandido) h3 {
+    font-size: 1.1em;
+  }
+
+  .conteudo-evento.expandido {
+    padding: 15px;
+  }
+
+  .conteudo-evento.expandido h3 {
+    font-size: 1.2em;
+  }
+
+  .conteudo-evento.expandido .imagem-container {
+    height: 200px;
+  }
+
+  .conteudo-evento.expandido .video-container {
+    height: 220px;
+  }
+
+  .conteudo-evento h3 {
+    font-size: 1.2em;
+  }
+
+  .conteudo-evento p {
+    font-size: 0.9em;
+  }
+
+  .data {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container-timeline {
+    max-width: 100%;
+  }
+
+  .header h1 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
+
+  .header .subtitle {
+    font-size: 0.9em;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .timeline {
+    padding: 10px 0;
+  }
+
+  .evento {
+    margin-bottom: 30px;
+  }
+
+  .evento,
+  .evento.esquerda,
+  .evento.direita {
+    padding-left: 50px !important;
+    margin-bottom: 30px;
+  }
+
+  .ponto-timeline {
+    left: 15px;
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+
+  .conteudo-evento {
+    max-width: 100%;
+  }
+
+  .conteudo-evento:not(.expandido) {
+    min-height: 220px;
+  }
+
+  .conteudo-evento:not(.expandido) .texto-container {
+    padding: 25px 12px 12px 12px;
+  }
+
+  .conteudo-evento:not(.expandido) h3 {
+    font-size: 1em;
+  }
+
+  .conteudo-evento {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .conteudo-evento.expandido {
+    padding: 12px;
+  }
+
+  .conteudo-evento.expandido h3 {
+    font-size: 1.05em;
+    margin: 8px 0;
+  }
+
+  .conteudo-evento.expandido p {
+    font-size: 0.82em;
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+
+  .conteudo-evento.expandido .data {
+    font-size: 0.75em;
+  }
+
+  .conteudo-evento.expandido .imagem-container {
+    height: 160px;
+    margin-bottom: 10px;
+  }
+
+  .conteudo-evento.expandido .video-container {
+    height: 180px;
+    margin-bottom: 10px;
+  }
+
+  .conteudo-evento h3 {
+    font-size: 1.05em;
+    margin: 6px 0;
+  }
+
+  .conteudo-evento p {
+    font-size: 0.82em;
+  }
+
+  .data {
+    font-size: 0.75em;
+    padding: 3px 8px;
+  }
+
+  .imagem-container {
+    height: 180px;
+  }
+}
