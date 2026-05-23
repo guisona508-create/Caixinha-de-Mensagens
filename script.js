@@ -125,11 +125,11 @@ function gerarSaudacao() {
   const hora = new Date().getHours();
 
   if (hora >= 6 && hora <= 11) {
-    return "Bom dia minha princesa 💖";
+    return "Bom dia Isa 💖";
   } else if (hora >= 12 && hora <= 17) {
-    return "Boa tarde meu amor 💕";
+    return "Boa tarde Isa 💕";
   } else {
-    return "Boa noite minha vida 🌙";
+    return "Boa noite Isa🌙";
   }
 }
 document.getElementById("saudacao").innerText = gerarSaudacao();

@@ -57,3 +57,7 @@ document.addEventListener("click", function () {
     evento.classList.remove("expandido");
   });
 });
+
+function voltar() {
+  window.location.href = "../index.html";
+}
