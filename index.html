@@ -75,7 +75,7 @@
  -->
 
     <script>
-      // Script para avisar o Make quando o site carregar
+      // Script corrigido para envio de JSON real para o Make
       window.addEventListener("DOMContentLoaded", () => {
         const urlDoMake =
           "https://hook.us2.make.com/ick3gbhqarh49bsii24lxips4eco5g2k";
@@ -95,7 +95,7 @@
             enviarDadosParaOMake("Acessou a página inicial");
           });
 
-        // 2. Função corrigida que dispara o sinal para o Make
+        // 2. Função de disparo (com CORS liberado para o Make estruturar os dados)
         function enviarDadosParaOMake(acao) {
           const dados = {
             ip: userIp,
@@ -112,11 +112,10 @@
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(dados),
-            mode: "no-cors",
-          }).catch(() => console.log("Erro silencioso"));
+          }).catch((err) => console.log("Erro na requisição:", err));
         }
 
-        // 3. Monitora cliques corrigido
+        // 3. Monitora cliques em botões e links
         document.addEventListener("click", (event) => {
           const elemento = event.target;
 
