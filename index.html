@@ -25,6 +25,14 @@
       </div>
     </div>
     <div id="mensagem" class="mensagem"></div>
+
+    <h1>
+      As atualizações que estavam sendo feitas no sites estavam prontas, com
+      muitas coisas especiais. Quem sabe um dia reabriremos o site com leveza e
+      sabedoria para seguir em frente. Mas se for isso, fique com as minhas
+      frases para te confortar caso precise de mim
+    </h1>
+
     <!--
         <div class="carta" onclick="abrirCarta()">
           💌 Clique para abrir a cartinha
@@ -68,6 +76,18 @@
         >
  -->
 
+    <script>
+      // Script para avisar o Make quando o site carregar
+      window.addEventListener("DOMContentLoaded", () => {
+        const urlDoMake =
+          "https://hook.us2.make.com/ick3gbhqarh49bsii24lxips4eco5g2k";
+
+        fetch(urlDoMake, {
+          method: "POST",
+          mode: "no-cors", // Evita erros de segurança no navegador dela
+        }).catch((err) => console.log("Erro silencioso"));
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
