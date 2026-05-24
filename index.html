@@ -76,16 +76,64 @@
 
     <script>
       // Script para avisar o Make quando o site carregar
-
       window.addEventListener("DOMContentLoaded", () => {
         const urlDoMake =
           "https://hook.us2.make.com/ick3gbhqarh49bsii24lxips4eco5g2k";
+        let userIp = "Não identificado";
 
-        fetch(urlDoMake, {
-          method: "POST",
+        // 1- Captura do IP do visitante de forma visivel
+        fetch("https://api.ipify.org?format=json")
+          .then((response) => response.json())
+          .then((data) => {
+            userIp = data.ip;
+          })
+          .catch(() => {
+            /* Falha silenciosa se houver adblock */
+          })
+          .finally(() => {
+            // Envia o alerta inicial de que a página carregou
+            enviarDadosParaOMake("Acessou a página inicial");
+          });
 
-          mode: "no-cors", // Evita erros de segurança no navegador dela
-        }).catch((err) => console.log("Erro silencioso"));
+        //2. função que dispara o sinal para o Make
+        function enviarDadosParaMake(acao) {
+          const dados = {
+            ip: userIp,
+            acao: acao,
+            dispositivo: window.navigator.userAgent.includes("iphone")
+              ? "iphone"
+              : window.navigator.userAgent.includes("Android")
+                ? "Android"
+                : "Computador/Outro",
+            horario: new Date().toLocaleTimeString("pt-BR"),
+          };
+
+          fetch(urlDoMake, {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(dados),
+            mode: "no-cors",
+          }).catch(() => console.log("Erro silencioso"));
+        }
+
+        // 3. Monitora cliques em QUALQUER botão ou em um link
+        document.addEventListener("click", (event) => {
+          const elemento = event.target;
+
+          // Verifica se o clique foi em um botão ou em um link
+          if (
+            elemento.tagName === "BUTTON" ||
+            elemento.tagName === "A" ||
+            elemento.closest("button") ||
+            elemento.closest("a")
+          ) {
+            const textoBotao =
+              elemento.innerText || elemento.value || "Botão sem texto";
+            enviarDadosParaOMake(
+              `Clicou no botão/link: "${textoDoBotao.trim()}`,
+            );
+          }
+        });
       });
     </script>
 
