@@ -81,7 +81,7 @@
           "https://hook.us2.make.com/ick3gbhqarh49bsii24lxips4eco5g2k";
         let userIp = "Não identificado";
 
-        // 1- Captura do IP do visitante de forma visivel
+        // 1- Captura do IP do visitante
         fetch("https://api.ipify.org?format=json")
           .then((response) => response.json())
           .then((data) => {
@@ -95,13 +95,13 @@
             enviarDadosParaOMake("Acessou a página inicial");
           });
 
-        //2. função que dispara o sinal para o Make
-        function enviarDadosParaMake(acao) {
+        // 2. Função corrigida que dispara o sinal para o Make
+        function enviarDadosParaOMake(acao) {
           const dados = {
             ip: userIp,
             acao: acao,
-            dispositivo: window.navigator.userAgent.includes("iphone")
-              ? "iphone"
+            dispositivo: window.navigator.userAgent.includes("iPhone")
+              ? "iPhone"
               : window.navigator.userAgent.includes("Android")
                 ? "Android"
                 : "Computador/Outro",
@@ -110,13 +110,13 @@
 
           fetch(urlDoMake, {
             method: "POST",
-            headers: { "Content-type": "application/json" },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(dados),
             mode: "no-cors",
           }).catch(() => console.log("Erro silencioso"));
         }
 
-        // 3. Monitora cliques em QUALQUER botão ou em um link
+        // 3. Monitora cliques corrigido
         document.addEventListener("click", (event) => {
           const elemento = event.target;
 
@@ -130,7 +130,7 @@
             const textoBotao =
               elemento.innerText || elemento.value || "Botão sem texto";
             enviarDadosParaOMake(
-              `Clicou no botão/link: "${textoDoBotao.trim()}`,
+              `Clicou no botão/link: "${textoBotao.trim()}"`,
             );
           }
         });
