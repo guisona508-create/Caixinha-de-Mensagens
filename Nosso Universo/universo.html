@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./universo.css" />
+    <title>Nosso Universo ⭐💖</title>
+  </head>
+  <body>
+    <p id="hint">Encontre as estrelas mais brilhantes ✨</p>
+    <div class="overlay">
+      <h1>Nosso Universo ✨</h1>
+      <p>Cada estrela guarda algo sobre nós...</p>
+    </div>
+
+    <div id="universe"></div>
+
+    <div id="modal" class="hidden" onclick="outsideClick(event)">
+      <div class="modal-content">
+        <p id="message"></p>
+        <button onclick="closeModal()">Fechar</button>
+      </div>
+    </div>
+    <script src="./universo.js"></script>
+  </body>
+</html>

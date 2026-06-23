@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at bottom, #020111 0%, #000000 100%);
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+#universe {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* estrelas */
+.star {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.star:hover {
+  transform: scale(2);
+}
+
+/* signos */
+.sign {
+  position: absolute;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.sign:hover {
+  transform: scale(1.3);
+}
+
+/* modal */
+#modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+#modal:not(.hidden) {
+  display: flex;
+}
+
+.special {
+  background: gold;
+  box-shadow: 0 0 10px gold;
+}
+
+.star {
+  animation: blink 2s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: pop 0.2s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
