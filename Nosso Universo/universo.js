@@ -13,6 +13,7 @@ const mensagens = [
   "Cada momento com você vale tudo",
   "Você é meu lugar favorito",
   "Nosso amor é infinito",
+  "Te amo mais do que palavras podem expressar",
 ];
 
 // ♈ signos (você pode personalizar com o de vocês)
