@@ -67,11 +67,7 @@ for (let i = 0; i < 80; i++) {
   universe.appendChild(star);
 }
 
-const especiais = [
-  "Esse momento nunca saiu da minha cabeça...",
-  "Aqui começou algo que mudou tudo",
-  "Você nem imagina o quanto isso significou pra mim",
-];
+const especiais = ["Undefined", "Undefined", "Undefined"];
 
 for (let i = 0; i < 5; i++) {
   const star = document.createElement("div");
