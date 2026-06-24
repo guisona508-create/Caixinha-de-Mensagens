@@ -2,6 +2,10 @@ const universe = document.getElementById("universe");
 const modal = document.getElementById("modal");
 const message = document.getElementById("message");
 
+function voltar() {
+  window.location.href = "../index.html";
+}
+
 // 💬 mensagens das estrelas
 const mensagens = [
   "Lembro do dia que te conheci ✨",
